@@ -1,6 +1,6 @@
 ﻿namespace ipmessage
 {
-    partial class Form1
+    partial class SendForm
     {
         /// <summary>
         /// 必要なデザイナー変数です。
@@ -28,9 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // SendForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(292, 273);
+            this.Name = "SendForm";
             this.Text = "Form1";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
