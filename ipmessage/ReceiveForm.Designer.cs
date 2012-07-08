@@ -1,6 +1,6 @@
 ﻿namespace ipmessage
 {
-    partial class Form2
+    partial class ReceiveForm
     {
         /// <summary>
         /// 必要なデザイナー変数です。
@@ -30,13 +30,13 @@
         {
             this.SuspendLayout();
             // 
-            // Form2
+            // ReceiveForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(292, 273);
-            this.Name = "Form2";
+            this.Name = "ReceiveForm";
             this.Text = "Form2";
             this.ResumeLayout(false);
 

@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace ipmessage
 {
-    public partial class Form2 : Form
+    public partial class ReceiveForm : Form
     {
-        public Form2()
+        public ReceiveForm()
         {
             InitializeComponent();
         }
