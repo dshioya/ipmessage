@@ -20,6 +20,9 @@ namespace ipmessage
                 Application.Exit();
             }
 
+            G.server = new RecieveServer();
+            G.server.start();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new SendForm());

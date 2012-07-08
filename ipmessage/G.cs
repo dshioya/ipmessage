@@ -12,6 +12,8 @@ namespace ipmessage
         // ポート番号
         public static int port = 2001;
 
+        public static RecieveServer server;
+
         /**
          * アカウントCSVファイル名。
          */
