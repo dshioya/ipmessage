@@ -60,7 +60,7 @@ namespace ipmessage
         private void ReplyButton_Click(object sender, EventArgs e)
         {
             // SendFormインスタンスの生成と表示
-            SendForm sForm = new SendForm(messageBox.Text);
+            SendForm sForm = new SendForm(messageBox.Text, ip);
             sForm.Show();
         }
 
