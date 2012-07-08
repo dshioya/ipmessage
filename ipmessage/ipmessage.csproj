@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="G.cs" />
     <Compile Include="ReceiveForm.cs">
       <SubType>Form</SubType>
     </Compile>

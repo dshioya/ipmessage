@@ -15,20 +15,32 @@ namespace ipmessage
     public partial class ReceiveForm : Form
     {
 
-        private String targetName;
-        private DateTime rcvTime = DateTime.Now;
+        private string targetName;
+        private DateTime rcvTime ;
+        private string ipAdrs;
+        private string message ;
 
         public ReceiveForm()
         {
-            
+            // 表示文字列の設定
+            rcvTime = DateTime.Now; // 相手から受け取る？日時（仮にNow）
+            ipAdrs = "192.168.1.2";   // IPアドレス（仮にまつこ）
+            message = "塩屋さんから受信したメッセージです。ちょっとぐらいの長文も表示できるか試してみます。";
+
+            // 相手のIPアドレスから名前を取得。
+            // 見つからなければIPアドレスを表示名にし、2種類のハッシュにIPアドレスを登録する。
+            if (G.ipHash.Contains(ipAdrs))
+            {
+                targetName = (string)G.ipHash[ipAdrs];
+            }
+            else
+            {
+                targetName = ipAdrs;
+                G.accountHash.Add(ipAdrs, ipAdrs);
+                G.ipHash.Add(ipAdrs, ipAdrs);
+            }
+
             InitializeComponent();
-
-            // TODO：相手のIPアドレスを取得する
-
-            // TODO：取得したIPアドレスをCSVと突き合わせ、相手の名前を取得
-            targetName = "塩屋 大介";
-
-            // TODO：CSVに存在しないIPアドレスの場合、相手の名前を”名無しさん（IPアドレス）”に設定する
 
             // 受け取った日時と名称をinfoLabelに反映
             infoLabel.Text = rcvTime.Year + "年" + 
@@ -38,7 +50,7 @@ namespace ipmessage
                              rcvTime.Minute + "分 " + 
                              targetName + "さんから";
             // 受け取ったメッセージをmessageBoxに反映
-            messageBox.Text = "塩屋さんから受信したメッセージです。ちょっとぐらいの長文も表示できるか試してみます。";
+            messageBox.Text = message;
             
         }
 
@@ -47,8 +59,6 @@ namespace ipmessage
          */
         private void ReplyButton_Click(object sender, EventArgs e)
         {
-            // TODO：CSVに存在しない相手だった場合、予めCSVにIPアドレス,IPアドレスを登録する
-
             // SendFormインスタンスの生成と表示
             SendForm sForm = new SendForm(messageBox.Text);
             sForm.Show();
