@@ -16,16 +16,6 @@ namespace ipmessage
      */
     public partial class SendForm : Form
     {
-        /**
-         * アカウントCSVファイル名。
-         */
-        private string accountCsvFilename = "account.csv";
-
-        /**
-         * アカウント情報のキャッシュ一覧。
-         */
-        private Hashtable accountHash = new Hashtable();
-        private Hashtable ipHash = new Hashtable();
 
         /**
          * コンストラクタ。
@@ -34,19 +24,10 @@ namespace ipmessage
         {
             InitializeComponent();
 
-            // アカウント情報をロードする
-            if (!readAccountCsv())
+            // アカウントリストボックスを更新する
+            foreach (string name in G.accountHash.Keys)
             {
-                // ロードに失敗した場合はアプリケーション終了
-                Application.Exit();
-            }
-            else
-            {
-                // アカウントリストボックスを更新する
-                foreach (string name in accountHash.Keys)
-                {
-                    accountList.Items.Add(name);
-                }
+                accountList.Items.Add(name);
             }
 
             if (header.Length > 0)
@@ -55,37 +36,6 @@ namespace ipmessage
                 messageText.Text = "> " + header + "\n";
             }
 
-        }
-
-        /**
-         * アカウントCSVファイルをロードする。
-         */
-        private bool readAccountCsv()
-        {
-            if (!File.Exists(accountCsvFilename))
-            {
-                // ファイルが存在しない場合
-                return false;
-            }
-
-            // CSVファイルを読込んでアカウントリストに表示する
-            StreamReader sr = new StreamReader(accountCsvFilename, Encoding.GetEncoding("Shift_JIS"));
-
-            string line;
-            while ((line = sr.ReadLine()) != null)
-            {
-                string[] data = line.Split(',');
-                if (data.Length > 1)
-                {
-                    accountHash.Add(data[0], data[1]);
-                    ipHash.Add(data[1], data[0]);
-                }
-            }
-
-            // ストリームクローズ
-            sr.Close();
-
-            return true;
         }
 
         /**

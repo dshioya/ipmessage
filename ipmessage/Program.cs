@@ -13,9 +13,16 @@ namespace ipmessage
         [STAThread]
         static void Main()
         {
+            // アカウント情報をロードする
+            if (!G.readAccountCsv())
+            {
+                // ロードに失敗した場合はアプリケーション終了
+                Application.Exit();
+            }
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ReceiveForm());
+            Application.Run(new SendForm());
         }
     }
 }

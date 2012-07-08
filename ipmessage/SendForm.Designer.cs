@@ -35,21 +35,21 @@
             // 
             // accountList
             // 
-            this.accountList.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.accountList.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.accountList.FormattingEnabled = true;
-            this.accountList.ItemHeight = 16;
             this.accountList.Location = new System.Drawing.Point(13, 13);
             this.accountList.Name = "accountList";
-            this.accountList.Size = new System.Drawing.Size(267, 116);
+            this.accountList.Size = new System.Drawing.Size(328, 121);
             this.accountList.TabIndex = 0;
             // 
             // messageText
             // 
-            this.messageText.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.messageText.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.messageText.Location = new System.Drawing.Point(13, 167);
             this.messageText.Multiline = true;
             this.messageText.Name = "messageText";
-            this.messageText.Size = new System.Drawing.Size(267, 46);
+            this.messageText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.messageText.Size = new System.Drawing.Size(328, 129);
             this.messageText.TabIndex = 1;
             this.messageText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MessageText_KeyDown);
             this.messageText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MessageText_KeyPress);
@@ -69,7 +69,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(292, 237);
+            this.ClientSize = new System.Drawing.Size(353, 320);
             this.Controls.Add(this.messageLabel);
             this.Controls.Add(this.messageText);
             this.Controls.Add(this.accountList);
