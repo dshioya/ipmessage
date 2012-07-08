@@ -14,10 +14,12 @@ namespace ipmessage
      */
     public partial class ReceiveForm : Form
     {
+
+        private String targetName;
+        private DateTime rcvTime = DateTime.Now;
+
         public ReceiveForm()
         {
-            String targetName;
-            DateTime rcvTime = DateTime.Now;
             
             InitializeComponent();
 
@@ -48,7 +50,7 @@ namespace ipmessage
             // TODO：CSVに存在しない相手だった場合、予めCSVにIPアドレス,IPアドレスを登録する
 
             // SendFormインスタンスの生成と表示
-            SendForm sForm = new SendForm();
+            SendForm sForm = new SendForm(messageBox.Text);
             sForm.Show();
         }
 
