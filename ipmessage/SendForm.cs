@@ -9,7 +9,6 @@ using System.Windows.Forms;
 using System.IO;
 using System.Collections;
 using System.Net.Sockets;
-using System.Text;
 
 namespace ipmessage
 {
@@ -22,7 +21,7 @@ namespace ipmessage
         /**
          * コンストラクタ。
          */
-        public SendForm(string header = "")
+        public SendForm(string header = "", string ip = "")
         {
             InitializeComponent();
 
@@ -30,6 +29,11 @@ namespace ipmessage
             foreach (string name in G.accountHash.Keys)
             {
                 accountList.Items.Add(name);
+            }
+
+            if (ip.Length > 0)
+            {
+                accountList.SelectedItem = G.ipHash[ip];
             }
 
             if (header.Length > 0)
@@ -73,6 +77,9 @@ namespace ipmessage
             }
         }
 
+        /**
+         * メッセージ送信処理。
+         */
         private void sendMessage()
         {
             //文字コードを指定する
