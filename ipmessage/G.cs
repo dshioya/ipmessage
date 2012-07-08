@@ -9,6 +9,10 @@ namespace ipmessage
 {
     class G
     {
+        //アプリケーションで使用する文字コード
+        public static Encoding enc = Encoding.UTF8;
+        // ホスト名
+        public static string host = "localhost";
         // ポート番号
         public static int port = 2001;
 

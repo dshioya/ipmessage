@@ -82,9 +82,6 @@ namespace ipmessage
          */
         private void sendMessage()
         {
-            //文字コードを指定する
-            Encoding enc = Encoding.UTF8;
-
             string errorSend = "";
 
             // メッセージを取得
@@ -112,7 +109,7 @@ namespace ipmessage
                     ns = client.GetStream();
 
                     // メッセージを送信する
-                    byte[] messageBytes = enc.GetBytes(message);
+                    byte[] messageBytes = G.enc.GetBytes(message);
                     ns.Write(messageBytes, 0, messageBytes.Length);
 
                 }
