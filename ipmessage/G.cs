@@ -9,6 +9,9 @@ namespace ipmessage
 {
     class G
     {
+        // ポート番号
+        public static int port = 2001;
+
         /**
          * アカウントCSVファイル名。
          */
