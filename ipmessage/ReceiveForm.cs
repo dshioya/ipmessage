@@ -17,27 +17,27 @@ namespace ipmessage
 
         private string targetName;
         private DateTime rcvTime ;
-        private string ipAdrs;
+        private string ip;
         private string message ;
 
         public ReceiveForm()
         {
             // 表示文字列の設定
             rcvTime = DateTime.Now; // 相手から受け取る？日時（仮にNow）
-            ipAdrs = "192.168.1.2";   // IPアドレス（仮にまつこ）
+            ip = "192.168.1.2";   // IPアドレス（仮にまつこ）
             message = "塩屋さんから受信したメッセージです。ちょっとぐらいの長文も表示できるか試してみます。";
 
             // 相手のIPアドレスから名前を取得。
             // 見つからなければIPアドレスを表示名にし、2種類のハッシュにIPアドレスを登録する。
-            if (G.ipHash.Contains(ipAdrs))
+            if (G.ipHash.Contains(ip))
             {
-                targetName = (string)G.ipHash[ipAdrs];
+                targetName = (string)G.ipHash[ip];
             }
             else
             {
-                targetName = ipAdrs;
-                G.accountHash.Add(ipAdrs, ipAdrs);
-                G.ipHash.Add(ipAdrs, ipAdrs);
+                targetName = ip;
+                G.accountHash.Add(ip, ip);
+                G.ipHash.Add(ip, ip);
             }
 
             InitializeComponent();
@@ -60,7 +60,7 @@ namespace ipmessage
         private void ReplyButton_Click(object sender, EventArgs e)
         {
             // SendFormインスタンスの生成と表示
-            SendForm sForm = new SendForm(messageBox.Text);
+            SendForm sForm = new SendForm(messageBox.Text, ip);
             sForm.Show();
         }
 
