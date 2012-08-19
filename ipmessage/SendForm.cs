@@ -48,6 +48,14 @@ namespace ipmessage
         }
 
         /**
+         * メッセージボックスの内容を設定する。
+         */
+        public void setMessage(string message)
+        {
+            messageText.Text = message;
+        }
+
+        /**
          * Enterキーのみ押されたかどうかのフラグ。
          */
         private bool isPressedEnterKey;
