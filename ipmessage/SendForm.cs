@@ -38,8 +38,11 @@ namespace ipmessage
 
             if (header.Length > 0)
             {
+                // 各行に">"を付与
+                header = ">" + header.Replace("\r\n", "\r\n>");
+
                 // 受信メッセージをテキストボックスに設定する
-                messageText.Text = "> " + header + "\r\n";
+                messageText.Text = header + "\r\n";
             }
 
         }
