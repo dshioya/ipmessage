@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace ipmessage
 {
@@ -57,10 +58,22 @@ namespace ipmessage
          */
         private void ReplyButton_Click(object sender, EventArgs e)
         {
-            // SendFormインスタンスの生成と表示
-            SendForm sForm = new SendForm(messageBox.Text, this.ip);
-            sForm.Show();
-            //TODO 送信フォームを生成したら、受信フォーム（自分）を消す方法を検討する
+            string message = messageBox.Text;
+
+            ThreadStart tStart = () =>
+            {
+                // SendFormインスタンスの生成と表示
+                SendForm sForm = new SendForm(message, this.ip);
+                sForm.ShowDialog();
+            };
+            // スレッドを生成する
+            Thread t = new Thread(tStart);
+            t.IsBackground = true;
+            t.Start();
+
+            // 自分フォームをクローズ
+            this.Close();
+
         }
 
     }
