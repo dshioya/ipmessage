@@ -45,6 +45,7 @@
             // messageText
             // 
             this.messageText.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.messageText.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
             this.messageText.Location = new System.Drawing.Point(13, 167);
             this.messageText.Multiline = true;
             this.messageText.Name = "messageText";

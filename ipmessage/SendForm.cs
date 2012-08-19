@@ -73,6 +73,9 @@ namespace ipmessage
 
             // 全選択を解除
             messageText.Select(messageText.Text.Length, 0);
+
+            // IMEモードを「ひらがな」に設定
+            messageText.ImeMode = ImeMode.Hiragana;
         }
 
         /**
