@@ -50,7 +50,16 @@ namespace ipmessage
                              targetName + "さんから";
             // 受け取ったメッセージをmessageBoxに反映
             messageBox.Text = message;
-            
+        }
+
+        /**
+         * 画面描画イベント処理
+         */
+        private void Form_shown(object sender, EventArgs e)
+        {
+            // メッセージボックスの最下行を選択させる。
+            messageBox.Select(messageBox.Text.Length, 0);
+            messageBox.ScrollToCaret();
         }
 
         /** 

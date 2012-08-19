@@ -62,10 +62,12 @@
             // 
             // messageBox
             // 
+            this.messageBox.HideSelection = false;
             this.messageBox.Location = new System.Drawing.Point(13, 49);
             this.messageBox.Multiline = true;
             this.messageBox.Name = "messageBox";
             this.messageBox.ReadOnly = true;
+            this.messageBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.messageBox.Size = new System.Drawing.Size(284, 100);
             this.messageBox.TabIndex = 3;
             // 
@@ -81,6 +83,7 @@
             this.Controls.Add(this.infoLabel);
             this.Name = "ReceiveForm";
             this.Text = "受信フォーム";
+            this.Shown += new System.EventHandler(this.Form_shown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
