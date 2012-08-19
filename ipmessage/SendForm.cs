@@ -65,7 +65,14 @@ namespace ipmessage
             accountList.SelectedItem = G.ipHash[ip];
 
             // メッセージ更新
-            messageText.Text = message;
+            // 各行に">"を付与
+            message = ">" + message.Replace("\r\n", "\r\n>");
+
+            // 受信メッセージをテキストボックスに設定する
+            messageText.Text = message + "\r\n";
+
+            // 全選択を解除
+            messageText.Select(messageText.Text.Length, 0);
         }
 
         /**
