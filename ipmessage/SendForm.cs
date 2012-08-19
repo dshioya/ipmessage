@@ -48,10 +48,23 @@ namespace ipmessage
         }
 
         /**
-         * メッセージボックスの内容を設定する。
+         * 返信用のUI更新処理。
          */
-        public void setMessage(string message)
+        public void updateForReply(string message, string ip)
         {
+            // アカウントリストボックスを一旦クリア
+            accountList.Items.Clear();
+
+            // アカウントリストボックスを更新する
+            foreach (string name in G.accountHash.Keys)
+            {
+                accountList.Items.Add(name);
+            }
+
+            // 返信相手を初期選択する
+            accountList.SelectedItem = G.ipHash[ip];
+
+            // メッセージ更新
             messageText.Text = message;
         }
 
