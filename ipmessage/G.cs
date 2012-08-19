@@ -12,9 +12,9 @@ namespace ipmessage
         //アプリケーションで使用する文字コード
         public static Encoding enc = Encoding.UTF8;
         // ホスト名
-        public static string host = "localhost";
+        public static string hostfile = "host";
         // ポート番号
-        public static int port = 2001;
+        public static int port = 8080;
 
         public static RecieveServer server;
 
@@ -28,6 +28,28 @@ namespace ipmessage
          */
         public static Hashtable accountHash = new Hashtable();
         public static Hashtable ipHash = new Hashtable();
+
+        /**
+         * ホストファイルをロードする。
+         */
+        public static string readHost()
+        {
+            if (!File.Exists(hostfile))
+            {
+                // ファイルが存在しない場合
+                return null;
+            }
+
+            // CSVファイルを読込んでアカウントリストに表示する
+            StreamReader sr = new StreamReader(hostfile, Encoding.GetEncoding("Shift_JIS"));
+
+            string line = sr.ReadLine();
+
+            // ストリームクローズ
+            sr.Close();
+
+            return line;
+        }
 
         /**
          * アカウントCSVファイルをロードする。

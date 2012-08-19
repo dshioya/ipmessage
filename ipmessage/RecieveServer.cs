@@ -14,9 +14,17 @@ namespace ipmessage
     {
 
         private bool looping;
+        private string host;
 
         public void start()
         {
+            host = G.readHost();
+            if (host == null)
+            {
+                // ホスト名が取得できない場合は処理中断
+                return;
+            }
+
             looping = true;
 
             Thread t = new Thread(new ThreadStart(this.task));
@@ -32,8 +40,8 @@ namespace ipmessage
         private void task()
         {
             //Gクラスに設定したホスト名でListenを開始する
-            IPAddress ipAdd = Dns.GetHostEntry(G.host).AddressList[0];
-            TcpListener listener = new TcpListener(ipAdd, G.port);
+            IPEndPoint ipAdd = new IPEndPoint(IPAddress.Parse(host), G.port);
+            TcpListener listener = new TcpListener(ipAdd);
             listener.Start();
 
             while (looping)

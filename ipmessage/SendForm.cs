@@ -113,8 +113,9 @@ namespace ipmessage
                     ns.Write(messageBytes, 0, messageBytes.Length);
 
                 }
-                catch (SocketException) {
-                    errorSend += "「" + account + "」\n";
+                catch (SocketException e) {
+//                    errorSend += "「" + account + "」\n";
+                    errorSend += e.ToString();
                 }
                 finally
                 {
