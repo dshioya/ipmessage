@@ -18,6 +18,8 @@ namespace ipmessage
 
         public static RecieveServer server;
 
+        public static SendForm sendForm;
+
         /**
          * アカウントCSVファイル名。
          */

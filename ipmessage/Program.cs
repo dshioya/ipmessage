@@ -20,12 +20,17 @@ namespace ipmessage
                 Application.Exit();
             }
 
+            // 受信サーバ起動
             G.server = new RecieveServer();
             G.server.start();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SendForm());
+
+            SendForm sendForm = new SendForm();
+            G.sendForm = sendForm;
+
+            Application.Run(sendForm);
         }
     }
 }
