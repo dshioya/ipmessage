@@ -39,7 +39,7 @@ namespace ipmessage
             if (header.Length > 0)
             {
                 // 受信メッセージをテキストボックスに設定する
-                messageText.Text = "> " + header + "\n";
+                messageText.Text = "> " + header + "\r\n";
             }
 
         }

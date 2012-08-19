@@ -18,14 +18,12 @@ namespace ipmessage
         private string targetName;
         private DateTime rcvTime ;
         private string ip;
-        private string message ;
 
-        public ReceiveForm()
+        public ReceiveForm(string ip,string message)
         {
             // 表示文字列の設定
             rcvTime = DateTime.Now; // 相手から受け取る？日時（仮にNow）
-            ip = "192.168.1.2";   // IPアドレス（仮にまつこ）
-            message = "塩屋さんから受信したメッセージです。ちょっとぐらいの長文も表示できるか試してみます。";
+            this.ip = ip;
 
             // 相手のIPアドレスから名前を取得。
             // 見つからなければIPアドレスを表示名にし、2種類のハッシュにIPアドレスを登録する。
@@ -60,8 +58,9 @@ namespace ipmessage
         private void ReplyButton_Click(object sender, EventArgs e)
         {
             // SendFormインスタンスの生成と表示
-            SendForm sForm = new SendForm(messageBox.Text, ip);
+            SendForm sForm = new SendForm(messageBox.Text, this.ip);
             sForm.Show();
+            //TODO 送信フォームを生成したら、受信フォーム（自分）を消す方法を検討する
         }
 
     }

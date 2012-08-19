@@ -15,6 +15,7 @@ namespace ipmessage
 
         private bool looping;
         private string host;
+        private TcpListener listener;
 
         public void start()
         {
@@ -26,6 +27,11 @@ namespace ipmessage
             }
 
             looping = true;
+
+            //Gクラスに設定したホスト名でListenを開始する
+            IPEndPoint ipAdd = new IPEndPoint(IPAddress.Parse(host), G.port);
+            listener = new TcpListener(ipAdd);
+            listener.Start();
 
             Thread t = new Thread(new ThreadStart(this.task));
             t.IsBackground = true;
@@ -39,10 +45,6 @@ namespace ipmessage
 
         private void task()
         {
-            //Gクラスに設定したホスト名でListenを開始する
-            IPEndPoint ipAdd = new IPEndPoint(IPAddress.Parse(host), G.port);
-            TcpListener listener = new TcpListener(ipAdd);
-            listener.Start();
 
             while (looping)
             {
@@ -76,11 +78,31 @@ namespace ipmessage
                 
                     //IPアドレス取得
                     string remoteIp = ((IPEndPoint)tcp.Client.RemoteEndPoint).Address.ToString();
-                    MessageBox.Show("IPは" + remoteIp + "です。文字列は" + resMsg + "です。");
-
+                    
+                    //recieveFormを生成する
+                    showRecieve(remoteIp, resMsg);
                 }
-
+                //リスナクローズ処理
+                tcp.Close();
+                tcp = null;
             }
+        }
+
+        /*
+         * 受信フォームを生成する
+         */
+        private void showRecieve(string ip,string message) { 
+
+            ThreadStart tStart = () =>
+            {
+                //RecieveFormを生成する
+                ReceiveForm rForm = new ReceiveForm(ip, message);
+                rForm.ShowDialog();
+            };
+            // スレッドを生成する
+            Thread t = new Thread(tStart);
+            t.IsBackground = true;
+            t.Start();        
         }
     }
 
