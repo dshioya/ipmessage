@@ -58,20 +58,9 @@ namespace ipmessage
          */
         private void ReplyButton_Click(object sender, EventArgs e)
         {
-            string message = messageBox.Text;
-
-            ThreadStart tStart = () =>
-            {
-                // SendFormインスタンスの生成と表示
-                SendForm sForm = new SendForm(message, this.ip);
-                sForm.ShowDialog();
-            };
-            // スレッドを生成する
-            Thread t = new Thread(tStart);
-            t.IsBackground = true;
-            t.Start();
-
-            // 自分フォームをクローズ
+            // 送信フォームの返信用メソッドをコールする。
+            G.sendForm.updateForReply(messageBox.Text,ip);
+            // 自分フォームをクローズ。
             this.Close();
 
         }
