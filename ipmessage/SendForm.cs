@@ -76,6 +76,9 @@ namespace ipmessage
 
             // IMEモードを「ひらがな」に設定
             messageText.ImeMode = ImeMode.Hiragana;
+
+            // スクロールを一番下に移動
+            messageText.ScrollToCaret();
         }
 
         /**
